@@ -24,8 +24,8 @@ expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: false }));
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../frontend/build'));
-    app.get('*', (req, res) => {
+    expressApp.use(express.static('../frontend/build'));
+    expressApp.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'))
     });
 }
