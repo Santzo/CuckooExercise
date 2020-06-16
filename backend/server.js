@@ -2,7 +2,7 @@ const express = require('express');
 const expressApp = express();
 const PORT = process.env.PORT || 5000;
 const mongoose = require('mongoose');
-const env = require('dotenv');
+if (process.env.NODE_ENV !== 'production') const env = require('dotenv');
 const path = require('path');
 const auth = require('./middleware/auth');
 env.config();
