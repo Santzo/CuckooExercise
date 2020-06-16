@@ -20,7 +20,7 @@ textarea{
 .button{
     transition: all 0.3s;
     cursor: pointer;
-    height:5vh;
+    height:50px;
     width:12.5em;
     border: 1px solid black;
     border-radius: 4%;
@@ -152,7 +152,6 @@ textarea{
     margin:0;
     align-self: center;
     margin-top: 10px;
-    width:25%;
 }
 /* Posts */
 .post{
@@ -305,12 +304,13 @@ textarea{
     }
     .nav-menu{
         transition: all 1s;
-        background:rgba(30,30,30,0.65);
+        box-shadow: 2px 2px 10px 5px rgba(50,80,50,0.65);
+        background:rgba(30,60,30,0.65);
         position:fixed;
         border: 1px solid black;
         border-radius: 10%;
         margin-top:12%;
-        padding: 0px 10px 30px 10px;
+        padding: 20px 10px 30px 10px;
         z-index: 1;
         display:none;
     }
@@ -329,6 +329,38 @@ textarea{
         font-size: 2.4rem;
     }
     .post-message{
+        font-size: 1.6rem;
+    }
+}
+@media (max-height: 500px)
+{
+    .new-post{
+        margin:0;
+        width:100vw;
+        left:0;
+        padding:0;
+    }
+    .form.new-post-form{
+        align-self: center;
+        width:75%;
+        margin-top: 3vh;
+        height:75vh;
+    }
+    .new-post-button{
+        height: 30px;
+        margin-bottom:0px;
+    }
+    .form-new-post{
+        font-size: 1.6rem;
+        height: 20px;
+        margin-bottom: -10px;
+    }
+    .textarea-new-post{
+        font-size: 1.6rem;
+        height: 120px;
+        margin-bottom: -20px;
+    }
+    .form-label{
         font-size: 1.6rem;
     }
 }

@@ -43,7 +43,7 @@ class LogInView extends React.Component {
                         <label className="form-label">Password</label>
                         <input className="form-input" type="password" name="password" onChange={this.onFieldChange} required />
                     </div>
-                    <input type="submit" value="Log In" className="button form-button" />
+                    <input type="submit" value="Login" className="button form-button" />
                 </form>
             </div>
         );
