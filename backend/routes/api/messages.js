@@ -9,7 +9,8 @@ moment.locale('en-gb');
 // GET /api/messages
 router.get('/', auth, async (req, res) => {
     try {
-        const messages = await Message.find().sort({ date: '-1' });
+        const messages = await Message.find();
+        messages.reverse();
         res.json(messages);
     }
     catch (err) {
