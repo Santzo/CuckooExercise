@@ -2,10 +2,11 @@
   "name": "Cuckoo-Exercise",
   "version": "1.0.0",
   "description": "",
-  "main": "./backend/server.js",
+  "main": "/backend/server.js",
   "scripts": {
-    "start": "./backend/node server.js",
-    "dev": "./backend/nodemon server.js",
+    "start": "cd backend && node server.js",
+    "dev": "cd backend && nodemon server.js",
+    "frontend": "cd frontend && npm start",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
