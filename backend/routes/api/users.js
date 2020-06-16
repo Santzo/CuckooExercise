@@ -39,7 +39,6 @@ router.post('/signup', async (req, res) => {
 
     // Send back JWT token
     const token = jwt.sign({ id: savedUser._id }, process.env.JWT_SECRET, { expiresIn: 3600 });
-    console.log(token);
     res.json({ user, token });
 
 })

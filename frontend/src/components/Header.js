@@ -22,22 +22,23 @@ class Header extends React.Component {
         // Check if the user has clicked 'New Post' -button to determine whether 
         // to show the input box or not
         const npClass = this.state.newPost ? 'new-post show' : 'new-post hidden';
+        const userNameFontSize = this.props.user != null ? Math.max(3 - this.props.user.name.length * 0.125, 1.8) + "rem" : 1.8 + "rem";
         return (
             <div>
                 <NewPost className={npClass} posted={this.close} />
                 <div className="header">
                     <div className="header-left">
-                        <a className="header-text" style={{ cursor: 'pointer' }} onClick={this.mainScreen}>Cuckoo Notes</a>
+                        <h1 className="header-text" style={{ cursor: 'pointer' }} onClick={this.mainScreen}>Cuckoo Notes</h1>
                     </div>
                     {this.props.user &&
-                        <div class="nav">
+                        <div className="nav">
                             {/* Hamburger menu is only shown when in mobile resolution */}
-                            <label id="hamburger" for="hamburger-toggle">&#9776;</label>
+                            <label id="hamburger" htmlFor="hamburger-toggle">&#9776;</label>
                             <input id="hamburger-toggle" type="checkbox" />
-                            <div class="nav-menu">
-                                <h1 class="nav-text">{this.props.user.name}</h1>
-                                <button class="button nav-button" onClick={this.newPost}>New Post</button>
-                                <button class="button nav-button" onClick={this.props.logOut}>Log Out</button>
+                            <div className="nav-menu">
+                                <h1 className="nav-text" style={{ fontSize: userNameFontSize }}>{this.props.user.name}</h1>
+                                <button className="button nav-button" onClick={this.newPost}>New Post</button>
+                                <button className="button nav-button" onClick={this.props.logOut}>Log Out</button>
                             </div>
                         </div>}
                 </div>

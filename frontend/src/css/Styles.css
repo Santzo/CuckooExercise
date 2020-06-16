@@ -251,10 +251,9 @@ textarea{
     margin-left: 1vw;
 }
 .nav-text{
+    align-self: center;
     color:#fff;
     font-weight: 300;
-    font-size:2.4rem;
-    line-height: 65px;
 }
 .nav-menu{
     display:flex;
@@ -281,14 +280,19 @@ textarea{
 @media (max-width: 768px)
 {
     .new-post{
-        left:0vw;
+        width:100vw;
+        left:0;
+        padding:0;
     }
     .new-post-button{
         width:32%;
+        white-space: normal;
         font-size: 1.6rem;
     }
     .form.new-post-form{
-        width:75vw;
+        align-self: center;
+        width:75%;
+        margin-top: 3vh;
         height:390px;
     }
     #hamburger{

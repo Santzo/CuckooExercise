@@ -19,6 +19,5 @@ class MainView extends React.Component {
         )
     }
 }
-const mapStateToProps = state => ({
-})
+
 export default connect(null, { wantsToSignUp, wantsToLogin })(MainView);

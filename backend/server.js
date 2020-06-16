@@ -12,11 +12,11 @@ const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }
-
+// Connect to the Mongo DB Atlas, using enviroment variables
 mongoose.connect(process.env.DATABASE_URL, options);
 const db = mongoose.connection;
 db.on('error', () => console.log('error'));
-db.once('open', () => console.log('connected'));
+db.once('open', () => console.log('Connected to the database'));
 
 // Both express.json() and express.urlencoded are needed to handle POST / PUT requests
 expressApp.use(express.json());

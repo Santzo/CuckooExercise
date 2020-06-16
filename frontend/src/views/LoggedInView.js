@@ -33,10 +33,9 @@ class LoggedInView extends React.Component {
     }
     shouldComponentUpdate = (prev, next) => {
         // Update component _only_ if a new post has been made.
-        return prev.newPost != next.newPost;
+        return prev.newPost !== next.newPost;
     }
     componentDidUpdate = () => {
-        console.log(this.props.newPost);
         // Redux updates state whenever a new post is sent, so we can update the list immediately on 
         // client side. If 'newPost' is true, update the posts immediately
         if (this.props.newPost) {

@@ -5,7 +5,6 @@ const moment = require('moment');
 const auth = require('../../middleware/auth');
 moment.locale('en-gb');
 
-
 // Get all messages
 // GET /api/messages
 router.get('/', auth, async (req, res) => {
@@ -18,7 +17,6 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
-
 //Post a new message
 //POST /api/messages
 router.post('/', auth, async (req, res) => {
@@ -27,7 +25,7 @@ router.post('/', auth, async (req, res) => {
         return;
     };
     const { title, message, author } = req.body;
-    const date = moment().format('D MMMM YYYY, hh:mm:ss');
+    const date = moment().format('D MMMM YYYY, HH:mm:ss');
     const msg = new Message({ title, message, author, date });
 
     try {

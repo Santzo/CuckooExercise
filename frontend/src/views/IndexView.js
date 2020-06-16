@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { notLoggedIn } from '../actions/viewActions';
 import { loadUser } from '../actions/authActions'
 import PropTypes from 'prop-types';
-import Store from '../store';
 
 class IndexView extends React.Component {
 

@@ -13,7 +13,6 @@ export const loadUser = () => async (dispatch, getState) => {
     try {
         const response = await fetch('/api/users/user', token);
         if (response.status !== 200) {
-            const errData = await response.json();
             throw new Error(response.status, response.statusText);
         }
         const data = await response.json();
@@ -46,7 +45,6 @@ export const login = ({ name, password }) => async dispatch => {
     try {
         const response = await fetch('/api/users/login', config)
         if (response.status !== 200) {
-            const data = await response.json();
             dispatch({ type: LOGIN_FAIL });
             dispatch(returnErrors(LOGIN_FAIL, response.status))
             return;
@@ -99,7 +97,6 @@ export const getAllPosts = () => async (dispatch, getState) => {
     try {
         const response = await fetch('/api/messages', token);
         if (response.status !== 200) {
-            const errData = await response.json();
             throw new Error(response.status, response.statusText);
         }
         const data = await response.json();
@@ -120,10 +117,8 @@ export const newPost = ({ title, message }) => async (dispatch, getState) => {
     try {
         const response = await fetch('/api/messages', token);
         if (response.status !== 200) {
-            const errData = await response.json();
             throw new Error(response.status, response.statusText);
         }
-        const data = await response.json();
         dispatch({ type: NEW_POST });
     }
     catch (err) {
