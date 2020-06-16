@@ -23,6 +23,10 @@ db.once('open', () => console.log('Connected to the database'));
 // Both express.json() and express.urlencoded are needed to handle POST / PUT requests
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: false }));
+
+// Routes
+expressApp.use('/api/messages', require('./routes/api/messages'));
+expressApp.use('/api/users', require('./routes/api/users'));
 if (process.env.NODE_ENV === 'production') {
     const _root = path.join(__dirname, '..', 'frontend', 'build');
     expressApp.use(express.static(_root));
@@ -30,9 +34,5 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile('index.html', { _root });
     });
 }
-// Routes
-expressApp.use('/api/messages', require('./routes/api/messages'));
-expressApp.use('/api/users', require('./routes/api/users'));
-
 // Listen to the port
 expressApp.listen(PORT, () => console.log('The server is running...'));
