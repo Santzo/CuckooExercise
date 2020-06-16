@@ -23,11 +23,11 @@ db.once('open', () => console.log('Connected to the database'));
 // Both express.json() and express.urlencoded are needed to handle POST / PUT requests
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: false }));
-
 if (process.env.NODE_ENV === 'production') {
-    expressApp.use(express.static('../frontend/build'));
+    const _root = path.join(__dirname, '..', 'frontend', 'build');
+    expressApp.use(express.static(_root));
     expressApp.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'))
+        res.sendFile('index.html', { _root });
     });
 }
 // Routes
