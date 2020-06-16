@@ -347,18 +347,19 @@ textarea{
         height:75vh;
     }
     .new-post-button{
-        height: 30px;
+        height: 100%;
         margin-bottom:0px;
+        margin-top: 5%;
     }
     .form-new-post{
         font-size: 1.6rem;
-        height: 20px;
-        margin-bottom: -10px;
+        height: 65%;
+        margin-bottom: -2.5%;
     }
     .textarea-new-post{
         font-size: 1.6rem;
-        height: 120px;
-        margin-bottom: -20px;
+        height: 30vh;
+        margin-bottom: -5%;
     }
     .form-label{
         font-size: 1.6rem;

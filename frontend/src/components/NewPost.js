@@ -29,7 +29,7 @@ class NewPost extends React.Component {
         return (
             <div className={this.props.className}>
                 <form autoComplete="off" className="form new-post-form" onSubmit={this.onSubmit}>
-                    <h1 className="form-label" style={{ marginBottom: '20px' }}>Post a new message</h1>
+                    <h1 className="form-label" style={{ marginBottom: '5%' }}>Post a new message</h1>
                     <div className="form-group">
                         <label className="form-label">Title</label>
                         <input className="form-new-post" type="text" name="title" onChange={this.onFieldChange} required />

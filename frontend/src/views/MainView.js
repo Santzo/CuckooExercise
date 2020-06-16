@@ -12,7 +12,7 @@ class MainView extends React.Component {
     render() {
         return (
             <div className="view-container">
-                <h1 className="view-text">Welcome to the note posting service. Please login or sign up for a new account.</h1>
+                <h1 className="view-text" style={{ marginBottom: '1.5%' }}>Welcome to the note posting service. Please login or sign up for a new account.</h1>
                 <Button text="Login" onClick={this.props.wantsToLogin} />
                 <Button text="Sign Up" onClick={this.props.wantsToSignUp} />
             </div>
