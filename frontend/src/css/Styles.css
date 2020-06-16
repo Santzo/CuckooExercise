@@ -5,6 +5,12 @@
     font-size: 100%;
     font-family: 'Archivo', sans-serif;
 }
+input{
+    resize: none;
+}
+input:focus{
+    width: inherit;
+}
 html{
     font-size: 62.5%;
 }
@@ -141,6 +147,7 @@ textarea{
 }
 .form-input{
     background: #eaeaea;
+    resize:none;
     height:30px;
     transition: all linear 0.15s;
     font-size: 2rem;
@@ -171,6 +178,7 @@ textarea{
     text-align:left;
 }
 .post-title{
+    white-space:nowrap ;
     overflow: hidden;
     font-size: 3.2rem;
     font-weight: 500;
@@ -329,6 +337,12 @@ textarea{
         font-size: 2.4rem;
     }
     .post-message{
+        font-size: 1.6rem;
+    }
+    .post-title{
+        font-size: 2.6rem;
+    }
+    .post-author{
         font-size: 1.6rem;
     }
 }
