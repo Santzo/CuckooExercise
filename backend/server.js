@@ -2,11 +2,12 @@ const express = require('express');
 const expressApp = express();
 const PORT = process.env.PORT || 5000;
 const mongoose = require('mongoose');
-if (process.env.NODE_ENV !== 'production') const env = require('dotenv');
 const path = require('path');
 const auth = require('./middleware/auth');
-env.config();
-
+if (process.env.NODE_ENV !== 'production') {
+    const env = require('dotenv');
+    env.config();
+}
 const options = {
     user: process.env.DATABASE_USER,
     pass: process.env.DATABASE_PASS,
