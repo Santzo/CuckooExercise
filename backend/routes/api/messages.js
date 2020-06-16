@@ -5,11 +5,12 @@ const moment = require('moment');
 const auth = require('../../middleware/auth');
 moment.locale('en-gb');
 
+
 // Get all messages
 // GET /api/messages
 router.get('/', auth, async (req, res) => {
     try {
-        const messages = await Message.find().sort({ date: -1 });
+        const messages = await Message.find().sort({ date: '-1' });
         res.json(messages);
     }
     catch (err) {
@@ -26,7 +27,7 @@ router.post('/', auth, async (req, res) => {
         return;
     };
     const { title, message, author } = req.body;
-    const date = moment().format('LLL');
+    const date = moment().format('D MMMM YYYY, hh:mm:ss');
     const msg = new Message({ title, message, author, date });
 
     try {

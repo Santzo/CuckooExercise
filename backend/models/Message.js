@@ -11,7 +11,7 @@ const MessageSchema = new mongoose.Schema({
         required: true
     },
     author: String,
-    date: String,
+    date: String
 })
 
 // Turn the schema into a model and export it

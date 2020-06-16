@@ -1,5 +1,6 @@
 import { GET_ERRORS, CLEAR_ERRORS, SIGNUP_ERROR } from '../actions/actionTypes';
 
+// The error reducer
 const init = {
     msg: {},
     status: null,

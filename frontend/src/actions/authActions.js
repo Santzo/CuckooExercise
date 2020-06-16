@@ -1,6 +1,7 @@
 import {
     USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS,
-    LOGIN_FAIL, LOGOUT_SUCCESS, SIGNUP_SUCCESS, SIGNUP_FAIL, LOGGEDIN_VIEW, NOT_LOGGEDIN_VIEW, CLEAR_ERRORS
+    LOGIN_FAIL, LOGOUT_SUCCESS, SIGNUP_SUCCESS, SIGNUP_FAIL,
+    LOGGEDIN_VIEW, NOT_LOGGEDIN_VIEW, CLEAR_ERRORS, NEW_POST
 } from '../actions/actionTypes';
 import { returnErrors, signUpError } from './errorActions'
 
@@ -112,7 +113,6 @@ export const getAllPosts = () => async (dispatch, getState) => {
     }
 }
 export const newPost = ({ title, message }) => async (dispatch, getState) => {
-    console.log(title, message);
     const token = tokenConfig(getState);
     const author = getState().auth.user.name;
     token.method = 'POST';
@@ -124,9 +124,7 @@ export const newPost = ({ title, message }) => async (dispatch, getState) => {
             throw new Error(response.status, response.statusText);
         }
         const data = await response.json();
-        console.log(data);
-        // Success
-        //return data;
+        dispatch({ type: NEW_POST });
     }
     catch (err) {
         dispatch(returnErrors(err.name, err.message));

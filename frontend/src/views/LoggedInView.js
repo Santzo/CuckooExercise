@@ -2,17 +2,20 @@ import React from 'react'
 // import Button from '../components/Button';
 import Post from '../components/Post';
 import { getAllPosts } from '../actions/authActions';
+import { postUpdated } from '../actions/postActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class LoggedInView extends React.Component {
     state = {
-        posts: []
+        posts: null,
+        updater: null,
     }
     static propTypes = {
-        getAllPosts: PropTypes.func.isRequired
+        getAllPosts: PropTypes.func.isRequired,
+        postUpdated: PropTypes.func.isRequired,
+        newPost: PropTypes.bool
     }
-
     // Check for new posts every 5 seconds.
     refreshPosts = async () => {
         const posts = await this.getPosts();
@@ -26,7 +29,25 @@ class LoggedInView extends React.Component {
         const posts = await this.getPosts();
         this.setState({ posts })
         // Set application to automatically check for new posts every 5 seconds.
-        setInterval(this.refreshPosts, 5000);
+        this.setState({ updater: setInterval(this.refreshPosts, 5000) });
+    }
+    shouldComponentUpdate = (prev, next) => {
+        // Update component _only_ if a new post has been made.
+        return prev.newPost != next.newPost;
+    }
+    componentDidUpdate = () => {
+        console.log(this.props.newPost);
+        // Redux updates state whenever a new post is sent, so we can update the list immediately on 
+        // client side. If 'newPost' is true, update the posts immediately
+        if (this.props.newPost) {
+            this.refreshPosts();
+            // Set newPost back to false again
+            this.props.postUpdated();
+        }
+    }
+    componentWillUnmount = () => {
+        // When component unmounts (user logs out), clear the setInterval
+        clearInterval(this.state.updater);
     }
 
     getPosts = async () => {
@@ -37,10 +58,14 @@ class LoggedInView extends React.Component {
     render() {
         return (
             <div className="view-container">
-                {this.state.posts.length === 0 && <h1 className="view-text">There is nothing here.</h1>}
+                {this.state.posts != null && this.state.posts.length === 0 &&
+                    <h1 className="view-text">There is nothing here.</h1>}
                 {this.state.posts}
             </div>
         )
     }
 }
-export default connect(null, { getAllPosts })(LoggedInView);
+const mapStateToProps = state => ({
+    newPost: state.post
+})
+export default connect(mapStateToProps, { getAllPosts, postUpdated })(LoggedInView);

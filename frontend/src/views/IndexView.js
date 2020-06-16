@@ -6,12 +6,8 @@ import PropTypes from 'prop-types';
 import Store from '../store';
 
 class IndexView extends React.Component {
-    constructor() {
-        super();
 
-    }
     componentDidMount() {
-        console.log('did mount');
         this.props.loadUser();
     }
     render() {

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { signup } from '../actions/authActions';
+import { clearErrors } from '../actions/errorActions';
 
 class SignUpView extends React.Component {
     state = {
@@ -13,8 +14,13 @@ class SignUpView extends React.Component {
     static propTypes = {
         isAuthenticated: PropTypes.bool,
         error: PropTypes.object,
-        signup: PropTypes.func.isRequired
+        signup: PropTypes.func.isRequired,
+        clearErrors: PropTypes.func.isRequired,
     };
+
+    componentDidMount = () => {
+        this.props.clearErrors();
+    }
 
     onSubmit = async e => {
         e.preventDefault();
@@ -25,7 +31,6 @@ class SignUpView extends React.Component {
             password
         }
         this.props.signup(signUpData);
-
     }
 
     onFieldChange = e => {
@@ -64,4 +69,4 @@ const mapStateToProps = state => ({
     error: state.error
 })
 
-export default connect(mapStateToProps, { signup })(SignUpView);
+export default connect(mapStateToProps, { signup, clearErrors })(SignUpView);
